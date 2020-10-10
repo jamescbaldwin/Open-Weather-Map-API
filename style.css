@@ -1,0 +1,18 @@
+.jumbotron {
+    height: min-content;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    text-align: center;
+    background-color: rgb(63, 63, 63);
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.dashboard {
+    /* font-weight: bold; */
+}
+
+#search-button {
+    background-color: #2196F3;
+    color: whitesmoke;
+}

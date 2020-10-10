@@ -6,38 +6,49 @@
     <title>Open Weather Map API</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand">Open Map Weather</a>
-        <form class="form-inline">
-          <input id="city" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button id="search-button" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </nav>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="dashboard">Weather Dashboard</h1>
+    </div>
+  </div>
+
       <div class="container">
           <div>
         <div class="row align-items-start">
           <div class="col-lg-4">
-            Search history
-          </div>
+          <form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+            <input id="citySearch" type="text" placeholder="Search.." name="search2">
+            <button id="search-button" type="submit"><i class="fa fa-search"></i></button>
+          </form>
+          Search history
+        </div>
           <div id="displayCity" class="col-lg-8" aria-placeholder="Most recent city searched info">
               <h2 id="cityName">City Name</h2>
-              <ul id="cityWeather">
-                <li id=cityTemp>Temperature:</li><br>
-                <li id="cityHumidity">Humidity:</li><br>
-                <li id="cityWind">Wind Speed:</li><br>
-                <li id="cityUV">UV</li>
-              </ul>
+              <table id="cityWeather">
+                <tr id=cityTemp></tr><br>
+                <tr id="cityHumidity"></tr><br>
+                <tr id="cityWind"></tr><br>
+                <tr id="cityUV"></tr><br>
+                </table>
             
           </div>
         </div>
       </div>
     </div>
 
+    
 
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    
 </body>
+<footer>
+  © 2020 James C. Baldwin IV
+</footer>
 </html>
