@@ -8,11 +8,11 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.dashboard {
-    /* font-weight: bold; */
-}
-
 #search-button {
     background-color: #2196F3;
     color: whitesmoke;
+}
+
+#footer {
+    margin-bottom: 0px;
 }
