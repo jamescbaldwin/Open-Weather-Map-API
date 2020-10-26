@@ -1,57 +1,115 @@
-    //click funciton for search button (call search button by its "id")
-   
-    var historyCity = JSON.parse(localStorage.getItem('history')) || []
+    var cityHistory = JSON.parse(localStorage.getItem('history')) || []
     
     $("#search-button").on("click", function() {
-        //event "preventDefault" prevents data from flashing
-        event.preventDefault();
+
+        // event.preventDefault();
         
-        //create variables to build url - 
-        //1 variable gets value of what is typed in search bar
         var city = $("#citySearch").val();
-        //saving city search to local storage
-        localStorage.setItem("city: ", city);
-        //2nd variable builds complete url with base url + city variable + apiKey
-        var queryUrl1 = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=91aa2321b032e187ef5be60685d90a73";
-        //ajax function to retrieve a data response, given what was searched
+        cityForecast(city);
+        query3(city);
+
+    });
+
+    function cityForecast(city) {
+
+        var query1 = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=91aa2321b032e187ef5be60685d90a73";
+
             $.ajax({
-                url: queryUrl1,
+                url: query1,
                 method: 'GET',
-            }).then(function(response) {
-                //log response of city searched
-                console.log(response);
-                var cityName = response.name;
-                var cityTemp = response.main.temp;
-                var cityFahrenheit = (((cityTemp * 1.8) - 459.67).toFixed(1));
-                var cityHumidity = response.main.humidity;
-                var cityWind = response.wind.speed;
+            }).then(function(response1) {
+                console.log(response1);
 
-                var cityLat = response.coord.lat;
+                if (cityHistory.indexOf(city) === -1) {
+                    cityHistory.push(city)
+                    localStorage.setItem("History: ", JSON.stringify(cityHistory))
+                    display()
+                }
+            var cityName = response1.name;
+            var cityTemp = response1.main.temp;
+            var cityFahrenheit = (((cityTemp * 1.8) - 459.67).toFixed(1));
+            var cityHumidity = response1.main.humidity;
+            var cityWind = response1.wind.speed;
+            var cityLat = response1.coord.lat;
                 console.log('cityLat:', cityLat)
-
-                var cityLon = response.coord.long;
+            var cityLon = response1.coord.lon;
                 console.log('cityLon:', cityLon)
 
-                
-                $("#cityName").html('<h4>' + cityName + " " + moment().format('LL'));
-                $("#cityTemp").html('<h4>' + "Temperature(F): " + cityFahrenheit);
-                $("#cityHumidity").html('<h4>' + "Humidity: " + cityHumidity + "%");
-                $("#cityWind").html('<h4>' + "Wind Speed: " + cityWind + "MPH");
-                // $("#cityUV").html('<h4>' + "UV Index: " + )
+            $("#cityName").html('<h4>' + cityName + " " + moment().format('LL'));
+            $("#cityTemp").html('<h4>' + "Temperature(F): " + cityFahrenheit);
+            $("#cityHumidity").html('<h4>' + "Humidity: " + cityHumidity + "%");
+            $("#cityWind").html('<h4>' + "Wind Speed: " + cityWind + " MPH");
 
-                // $("#citySearch").val(localStorage.getItem("city"));
-                // localStorage.setItem("lat", lat)
-                // localStorage.setItem("lon", lon)
-            
-               // http://api.openweathermap.org/data/2.5/uvi?lat={lat}&lon={lon}&appid={API key}
-            //  var queryURL2 = "http://api.openweathermap.org/data/2.5/uvi?lat=" + cityLat + "&lon=" + cityLon + "&appid=91aa2321b032e187ef5be60685d90a73";
+            var query2 = "http://api.openweathermap.org/data/2.5/uvi?lat=" + cityLat + "&lon=" + cityLon + "&appid=91aa2321b032e187ef5be60685d90a73";
 
-            // $.ajax({
-            //     url: queryURL2,
-            //     method: 'GET',
-            // }).then(function(response2) {
-            //     console.log(queryURL2);
-            //     console.log(response2);
-            // })
-        });
-        }); //click funciton
+            $.ajax({
+                url: query2,
+                method: 'GET'
+            }).then(function(response2) {
+                console.log(response2);
+                var cityUV = response2.value;
+                var uvColor = $("#cityUV").html('<h4>' + "UV Level: " + cityUV);
+
+                if (cityUV > 7) {
+                    uvColor.css('background-color', 'purple')
+                    uvColor.css('color', 'white')
+                } else if (cityUV <= 3) {
+                    uvColor.css('background-color', 'red')
+                    uvColor.css('color', 'black')
+                } else {
+                    uvColor.css('background-color', 'yellow')
+                    uvColor.css('color', 'black')
+                }
+            });
+          });
+        };
+    
+        function query3(city) {
+
+            var query3 = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=91aa2321b032e187ef5be60685d90a73";
+
+            $.ajax({
+                url: query3,
+                method: 'GET'
+            }).then(function (response3) {
+                console.log('response3:', response3);
+                var cityForecast = "";
+      for (let i = 0; i < response3.list.length; i = i + 8) {
+        citForecast += `<div class="col forecast bg-primary text-white ml-3 mb-3 rounded">
+        ${response3.list[i].dt_txt}
+        <p>Temperature: ${response3.list[i].main.temp}</p>
+        <img src="https://openweathermap.org/img/wn/${response3.list[i].weather[0].icon}@2x.png" />
+        <p>Wind Speed :${response3.list[i].wind.speed}</p>
+        <p>Description: ${response3.list[i].weather[0].description}</p>
+        </div> `
+            }
+
+            $("#cityForecast").html(cityForecast);
+            });
+        }
+
+        function display() {
+        var historyCity = JSON.parse(localStorage.getITem("History")) || []
+        var html = ""
+        for (var q = 0; q < historyCity.length; q++) {
+            html += '<button class="previousCity">${historyCity[q]}</button>'
+
+        }
+        console.log(html);
+        $("#searchHistory").html(html);
+        }
+
+    $('#history').on('click', ".previuosCity", function () {
+        var cityInput = $(this).text()
+        console.log(cityInput);
+        cityForecast(cityInput);
+        query3(cityInput);   
+      });
+
+      display()
+
+      $("#clearHistory").on("click", function () {
+          historyCity.splice(0)
+          localStorage.setItem("history", JSON.stringify(historyCity))
+          display()
+      })

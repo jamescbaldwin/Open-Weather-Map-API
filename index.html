@@ -2,53 +2,90 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Open Weather Map API</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/4439e3b362.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="dashboard">Weather Dashboard</h1>
-    </div>
-  </div>
-
-      <div class="container">
-          <div>
-        <div class="row align-items-start">
-          <div class="col-lg-4">
-          <form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
-            <input id="citySearch" type="text" placeholder="Search.." name="search2">
-            <button id="search-button" type="submit"><i class="fa fa-search"></i></button>
-          </form>
-          Search history
+    <div class="jumbotron">
+        <div class="container">
+          <h1 class="dashboard">Weather Dashboard</h1>
         </div>
-          <div id="displayCity" class="col-lg-8" aria-placeholder="Most recent city searched info">
-              <h2 id="cityName">City Name</h2>
-              <table id="cityWeather">
-                <tr id=cityTemp></tr><br>
-                <tr id="cityHumidity"></tr><br>
-                <tr id="cityWind"></tr><br>
-                <tr id="cityUV"></tr><br>
-                </table>
-            
-          </div>
-        </div>
-      </div>
     </div>
 
-    
+    <div class="container-fluid row"> 
+        <div class="col-4 left_div justify-content-center pt-3">
+            <div class="search-div mb-4">
+                <h5 class="justify-content-center pt-2 pl-3">Search for a City:</h5>
+                <form class="form-inline my-2 my-lg-0 mt-3 ml-3" action="/action_page.php" style="margin:auto;max-width:300px">
+                    <input id="citySearch" type="text" name="search2" >
+                    <button id="search-button" type="submit"><i class="fa fa-search"></i></button>
+                  </form>
+            </div>
+            <h4 class="justify-content-center" aria-placeholder="Search History"></h4>
+            <div class="container col-12" id="searchHistory"></div>
+        </div>
 
-    
+        <div d="currentWeather" class="col-8">
+            <div class="bg-light">
+                <h2 class="justify-content-center" id="cityName"></h2>
+                <div class="row">
+                    <div class="col-6">
+                        <h2 id="cityName"></h2>
+                        <p id="cityTemp"></p>
+                        <p id="cityHumidity"></p>
+                        <p id="cityWind"></p>
+                        <p id="cityUV"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="weeklyForecast bg-light">
+                <div class="bg-light">
+                    <h4>5-Day Forecast:</h4>
+                </div>
+                <div class="row justify-content-center">
+                    <div id="0 day-forecast" class="card-body">
+                        <h5 id="0 day-date"></h5>
+                        <img id="0 day-icon" src="" alt="weather icon">
+                        <p id="0 day-temp"></p>
+                        <p id="0 day-humidity"></p>
+                    </div>
+                    <div id="1 day-forecast" class="card-body">
+                        <h5 id="1 day-date"></h5>
+                        <img id="1 day-icon" src="" alt="weather icon">
+                        <p id="1 day-temp"></p>
+                        <p id="1 day-humidity"></p>
+                    </div>
+                    <div id="2 day-forecast" class="card-body">
+                        <h5 id="2 day-date"></h5>
+                        <img id="2 day-icon" src="" alt="weather icon">
+                        <p id="2 day-temp"></p>
+                        <p id="2 day-humidity"></p>
+                    </div>
+                    <div id="3 day-forecast" class="card-body">
+                        <h5 id="3 day-date"></h5>
+                        <img id="3 day-icon" src="" alt="weather icon">
+                        <p id="3 day-temp"></p>
+                        <p id="3 day-humidity"></p>
+                    </div>
+                    <div id="4 day-forecast" class="card-body">
+                        <h5 id="4 day-date"></h5>
+                        <img id="4 day-icon" src="" alt="weather icon">
+                        <p id="4 day-temp"></p>
+                        <p id="4 day-humidity"></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    
 </body>
-<footer id="footer">
-  © 2020 James C. Baldwin IV
-</footer>
 </html>

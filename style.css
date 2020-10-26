@@ -16,3 +16,29 @@
 #footer {
     margin-bottom: 0px;
 }
+
+#currentWeather {
+    padding-top: 3px;
+    border-radius: 1px;
+    border: black;
+}
+
+.card-body {
+    margin: 2;
+}
+
+.weeklyForecast {
+    border: grey;
+    margin-top: 3px;
+}
+
+.left-div {
+    height: 100%;
+}
+
+.card-body {
+    background-color: #2196F3;
+    color: white;
+    border-radius: 4px;
+    margin: 2px;
+}
