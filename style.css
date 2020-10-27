@@ -44,10 +44,11 @@
 }
 
 .previouslySearched {
-    background-color: #272b2f;
-    color: white;
+    /* background-color: #272b2f; */
+    color: black;
     border: none;
     font-size: smaller;
     border-radius: 4px;
     padding: 16px;
+    margin: 8px;
 }
