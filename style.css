@@ -9,7 +9,7 @@
 }
 
 #search-button {
-    background-color: #2196F3;
+    background-color: #0069D9;
     color: whitesmoke;
 }
 
@@ -41,4 +41,13 @@
     color: white;
     border-radius: 4px;
     margin: 2px;
+}
+
+.previouslySearched {
+    background-color: #272b2f;
+    color: white;
+    border: none;
+    font-size: smaller;
+    border-radius: 4px;
+    padding: 16px;
 }

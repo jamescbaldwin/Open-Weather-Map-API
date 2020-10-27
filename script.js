@@ -6,6 +6,7 @@ $("#search-button").on("click", function () {
     var city = $("#citySearch").val();
     cityForecast(city);
     weeklyWeather(city);
+    $("#citySearch").val() = "" 
     // $("#cityName").html(city)
 
 })
@@ -95,21 +96,22 @@ function weeklyWeather(city) {
                     console.log(day_number);
                     console.log(response3.list[i].main.temp);
                     day_number++; 
-                            }   
+                }   
             }
         });
+    }
 
     function display() {
         var cityHistory = JSON.parse(localStorage.getItem("history")) || []
         var html = ""
         for (var q = 0; q < cityHistory.length; q++) {
-            html += `<button class="previousCity">${cityHistory[q]}</button>`
+            html += `<button class="previouslySearched">${cityHistory[q]}</button>`
         }
         console.log(html);
         $("#searchHistory").html(html);
         }
 
-    $('#history').on('click', ".previuosCity", function () {
+    $('#history').on('click', ".previouslySearched", function() {
         var city = $(this).text()
         console.log(city);
         cityForecast(city);
@@ -123,4 +125,3 @@ function weeklyWeather(city) {
           localStorage.setItem("history", JSON.stringify(cityHistory))
           display()
       })
-    };
