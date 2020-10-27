@@ -25,8 +25,9 @@
                     <button id="search-button" type="submit"><i class="fa fa-search"></i></button>
                   </form>
             </div>
-            <h4 class="justify-content-center" aria-placeholder="Search History"></h4>
-            <div class="container col-12" id="searchHistory"></div>
+            <button class="btn btn-primary mb-3" type="button" id="clearHistory">Clear history</button>
+            <h4 id="searchHistory" class="col-1" aria-placeholder="Search History"></h4>
+            <div class="container col-2" id="history"></div>
         </div>
 
         <div d="currentWeather" class="col-8">
@@ -44,38 +45,38 @@
             </div>
             <div class="weeklyForecast bg-light">
                 <div class="bg-light">
-                    <h4>5-Day Forecast:</h4>
+                    <h4>Forecast:</h4>
                 </div>
-                <div class="row justify-content-center">
-                    <div id="0 day-forecast" class="card-body">
-                        <h5 id="0 day-date"></h5>
-                        <img id="0 day-icon" src="" alt="weather icon">
-                        <p id="0 day-temp"></p>
-                        <p id="0 day-humidity"></p>
+                <div id="forecast" class="row">
+                    <div id="0day-forecast" class="card-body">
+                        <h5 id="0day-date"></h5>
+                        <img id="0day-icon" src="" alt="weather icon">
+                        <p id="0day-temp"></p>
+                        <p id="0day-humidity"></p>
                     </div>
-                    <div id="1 day-forecast" class="card-body">
-                        <h5 id="1 day-date"></h5>
-                        <img id="1 day-icon" src="" alt="weather icon">
-                        <p id="1 day-temp"></p>
-                        <p id="1 day-humidity"></p>
+                    <div id="1day-forecast" class="card-body">
+                        <h5 id="1day-date"></h5>
+                        <img id="1day-icon" src="" alt="weather icon">
+                        <p id="1day-temp"></p>
+                        <p id="1day-humidity"></p>
                     </div>
-                    <div id="2 day-forecast" class="card-body">
-                        <h5 id="2 day-date"></h5>
-                        <img id="2 day-icon" src="" alt="weather icon">
-                        <p id="2 day-temp"></p>
-                        <p id="2 day-humidity"></p>
+                    <div id="2day-forecast" class="card-body">
+                        <h5 id="2day-date"></h5>
+                        <img id="2day-icon" src="" alt="weather icon">
+                        <p id="2day-temp"></p>
+                        <p id="2day-humidity"></p>
                     </div>
-                    <div id="3 day-forecast" class="card-body">
-                        <h5 id="3 day-date"></h5>
-                        <img id="3 day-icon" src="" alt="weather icon">
-                        <p id="3 day-temp"></p>
-                        <p id="3 day-humidity"></p>
+                    <div id="3day-forecast" class="card-body">
+                        <h5 id="3day-date"></h5>
+                        <img id="3day-icon" src="" alt="weather icon">
+                        <p id="3day-temp"></p>
+                        <p id="3day-humidity"></p>
                     </div>
-                    <div id="4 day-forecast" class="card-body">
-                        <h5 id="4 day-date"></h5>
-                        <img id="4 day-icon" src="" alt="weather icon">
-                        <p id="4 day-temp"></p>
-                        <p id="4 day-humidity"></p>
+                    <div id="4day-forecast" class="card-body">
+                        <h5 id="4day-date"></h5>
+                        <img id="4day-icon">
+                        <p id="4day-temp"></p>
+                        <p id="4day-humidity"></p>
                     </div>
                 </div>
             </div>
@@ -84,8 +85,10 @@
 
     </div>
 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 </body>
 </html>
