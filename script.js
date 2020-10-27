@@ -111,8 +111,8 @@ function weeklyWeather(city) {
         $("#searchHistory").html(html);
         }
 
-    $('#history').on('click', ".previouslySearched", function() {
-        var city = $(this).text()
+    $('#searchHistory').on("click", ".previouslySearched", function() {
+        let city = $(this).text();
         console.log(city);
         cityForecast(city);
         weeklyWeather(city);   
